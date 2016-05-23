@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="css/bootstrap.min.css"></head>
+<body  ng-app="app" >
+	<form ng-controller="myLogin">
+		<div class="form-group">
+			<label for="exampleInputEmail1">name</label>
+			<input type="text" class="form-control" placeholder="name" ng-model="user.uname"></div>
+		<div class="form-group">
+			<label for="exampleInputPassword1">Password</label>
+			<input type="password" class="form-control"  placeholder="Password" ng-model="user.pwd"></div>
+		<button type="submit" class="btn btn-default" ng-click="login()">Submit</button>
+		<div ng-bind="errMsg"></div>
+	</form>
+	<script type="text/javascript" src="js/angular.min.js"></script>
+	<script type="text/javascript">
+		angular.module('app',[]).controller('myLogin', function($scope){
+			$scope.user = {uname : '', pwd : ''};
+			$scope.errMsg = '';
+			$scope.login = function(){
+				if($scope.user.uname.length == 0 || $scope.user.pwd.length == 0) return;
+				if($scope.user.uname == 'admin' && $scope.user.pwd == '123'){
+					$scope.errMsg = '登陆成功';
+				}else{
+					$scope.errMsg = '用户名或密码错误';
+				}
+				console.log($scope.user.uname + ',' + $scope.user.pwd)
+			}
+		});
+	</script>
+</body>
+</html>

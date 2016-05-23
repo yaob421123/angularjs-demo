@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="css/bootstrap.min.css"></head>
+<body  ng-app="app" >
+	<div ng-controller="myCtrl-1">
+		<input type="text" ng-model='Data.msg'>
+		<p ng-bind="Data.msg"></p>
+	</div>
+	<div ng-controller="myCtrl-2">
+		<input type="text" ng-model='Data.msg'>
+		<p ng-bind="Data.msg"></p>
+	</div>
+	<script type="text/javascript" src="js/angular.min.js"></script>
+	<script type="text/javascript">
+		angular.module('app', [])
+		.factory('Data', function(){
+			return {
+				msg : 'hello'
+			}
+		})
+		.controller('myCtrl-1', function($scope, Data){
+			$scope.Data = Data;
+		})
+		.controller('myCtrl-2', function($scope, Data){
+			$scope.Data = Data;
+		})
+	</script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	
+</head>
+<body  ng-app="" >
+	<div class="main" >
+		<input type="text" ng-model='uname'>
+		<div ng-bind="uname"></div>
+		
+		<div class="{{uname}}"></div>
+	</div>
+	<script type="text/javascript" src="js/angular.min.js"></script>
+<!-- 	<script type="text/javascript">
+angular.module('app',[]).controller('myCtrl',function(){
+
+});
+
+</script> -->
+</body>
+</html>

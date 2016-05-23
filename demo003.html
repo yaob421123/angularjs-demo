@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	
+</head>
+<body  ng-app="app" >
+	<div class="main" ng-controller="myCtrl">
+		<input type="text" ng-model="msg">
+		<div>{{reverse()}}</div>
+	</div>
+	<script type="text/javascript" src="js/angular.min.js"></script>
+	<script type="text/javascript">
+		angular.module('app',[]).controller('myCtrl', function($scope){
+			$scope.msg = '';
+			$scope.reverse = function(){
+				return $scope.msg.split("").reverse().join("");
+			}
+		});
+	</script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	
+	<style type="text/css">
+		.main{ width:500px; margin:0 auto; padding-top:30px;}
+	</style>
+</head>
+<body ng-app="app">
+	<div class="main" ng-controller="Taskctrl">
+		<div class="input-group">
+			<input ng-model="task" type="text" class="form-control">
+			<span class="input-group-btn">
+				<button class="btn btn-default" ng-click="add()">提交</button>
+			</span>
+		</div>
+		<!-- <h4 ng-hide="arr.length == 0">任务列表</h4> -->
+		<h4 ng-if="arr.length > 0">任务列表</h4>
+		<ul class="list-group">
+			<li ng-repeat="item in arr track by $index" class="list-group-item">{{item}} <a ng-click="arr.splice($index,1)" href="javascript:;">删除</a></li>
+		</ul>
+	</div>
+	<script type="text/javascript" src="js/angular.min.js"></script>
+	<script type="text/javascript">
+		angular.module('app',[]).controller('Taskctrl', function($scope){
+			$scope.task = '';
+			$scope.arr = [];
+			$scope.add = function(){
+				$scope.arr.push($scope.task);
+			}
+		})
+	</script>
+</body>
+</html>

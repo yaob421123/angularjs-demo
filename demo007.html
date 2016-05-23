@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="css/bootstrap.min.css"></head>
+	<style type="text/css">.tx{ width:50px; height:50px; }</style>
+<body  ng-app="app" >
+	<form ng-controller="myLogin" name="f" ng-submit="register(user)">
+		<div class="form-group">
+			<img ng-src="{{user.icon}}" ng-if="user.isShowImg"  ng-class="{'tx':user.showIcon}"></div>
+		<div class="form-group">
+			<label for="exampleInputEmail1">name</label>
+			<input type="text" class="form-control" placeholder="name" ng-model="user.uname" required></div>
+		<div class="form-group">
+			<label for="exampleInputPassword1">Password</label>
+			<input type="password" class="form-control"  placeholder="Password" ng-model="user.pwd" required></div>
+		<div class="checkbox">
+			<label>
+				<input type="radio" name="sex"  ng-checked ="user.sex == 1">男</label>
+			<label>
+				<input type="radio" name="sex" ng-checked="user.sex == 0">女</label>
+		</div>
+		<div class="form-group">
+			<select ng-disabled="1 == 2">
+				<option value ="volvo">请选择职位</option>
+				 <option value ="volvo" ng-selected="user.zw == 1">前端工程师</option>
+				  <option value ="saab" ng-selected="user.zw == 2">.net工程师</option>
+				  <option value="opel" ng-selected="user.zw == 3">ios工程师</option>
+				  <option value="audi" ng-selected="user.zw == 4">java工程师</option>
+			</select>
+		</div>
+		<div class="checkbox">
+			<label>
+				<input type="checkbox" ng-checked="isChecked(1)">苹果</label>
+			<label>
+				<input type="checkbox" ng-checked="isChecked(2)">香蕉</label>
+			<label>
+				<input type="checkbox" ng-checked="isChecked(3)">梨</label>
+		</div>
+	
+		<button type="submit" class="btn btn-default" ng-click="login()" ng-disabled="f.$invaid">Submit</button>
+		<div ng-bind="errMsg"></div>
+	</form>
+	<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/angular.min.js"></script>
+	<script type="text/javascript">
+		angular.module('app',[]).controller('myLogin', function($scope){
+			$scope.user = {
+				isShowImg : true,
+				showIcon : true,
+				icon : 'img/aaa.jpg',
+				uname : '',
+				pwd : '',
+				zw : '2',
+				sex: '0',
+				aihao : [1,3]
+			}
+
+			$scope.isChecked = function(n){
+				var isOk = false;
+				for(var i = 0; i < $scope.user.aihao.length; i ++){
+					if(n == $scope.user.aihao[i]){
+						isOk = true;
+						break;
+					}
+				}
+				return isOk;
+			}
+
+			$scope.register = function(u){
+				console.log(u)
+			}
+		});
+	</script>
+</body>
+</html>
